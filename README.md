@@ -5,6 +5,7 @@
 2、[开发环境]：  
 * JDK             =》 1.8.191  
 * IntelliJ IDEA   =》 2018.2.5  
+* MyBatis         =》 3.4.7  
 * Tomcat          =》 1.80  
 * MySql           =》   
 * Vue             =》 2.x  
