@@ -2,12 +2,12 @@
 1、[功能描述]：  
               一款简洁的SPA，提供丰富&amp;易用的工具集合。
               
-2、[开发环境]：  
-             JDK             =》 1.8.191  
-             IntelliJ IDEA   =》 2018.2.5  
-             Tomcat          =》 1.80  
-             MySql           =》   
-             Vue             =》 2.x  
+2、[开发环境]： 
+  JDK             =》 1.8.191  
+  IntelliJ IDEA   =》 2018.2.5  
+  Tomcat          =》 1.80  
+  MySql           =》   
+  Vue             =》 2.x  
                  
 3、[项目结构简介]：  
 
