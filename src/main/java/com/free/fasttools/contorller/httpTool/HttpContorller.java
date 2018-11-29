@@ -19,6 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.free.fasttools.global.TradeCode;
 
+import java.io.IOException;
+
 /**
  * @Auther: zhengwei
  * @Date: 2018/11/28 21:44
@@ -38,6 +40,15 @@ public class HttpContorller extends BaseContorller {
         try{
             StringEntity entity=new StringEntity(JSON.toJSONString(dto), getContentType(dto.getContentType()));
             retMsg=HttpUtil.httpsSend(dto.getUrl(), Global.POST,entity);
+            json.put(Global.SUCCESS,true);
+            json.put(Global.ERRMSG,TradeCode.TRADE_SUCCESS.getMessage());
+            json.put("body",retMsg);
+            this.writeToPage(response,json);
+        }catch(IOException ioe){
+            logger.error(ioe.getMessage());
+            json.put(Global.SUCCESS,false);
+            json.put(Global.ERRMSG,ioe.getMessage());
+            this.writeToPage(response,json);
         }catch (Exception e){
             logger.error(e.getMessage());
             json.put(Global.SUCCESS,false);
@@ -54,6 +65,15 @@ public class HttpContorller extends BaseContorller {
         try{
             StringEntity entity=new StringEntity(JSON.toJSONString(dto), getContentType(dto.getContentType()));
             retMsg=HttpUtil.httpsSend(dto.getUrl(), Global.GET,entity);
+            json.put(Global.SUCCESS,true);
+            json.put(Global.ERRMSG,TradeCode.TRADE_SUCCESS.getMessage());
+            json.put("body",retMsg);
+            this.writeToPage(response,json);
+        }catch(IOException ioe){
+            logger.error(ioe.getMessage());
+            json.put(Global.SUCCESS,false);
+            json.put(Global.ERRMSG,ioe.getMessage());
+            this.writeToPage(response,json);
         }catch (Exception e){
             logger.error(e.getMessage());
             json.put(Global.SUCCESS,false);
@@ -70,6 +90,15 @@ public class HttpContorller extends BaseContorller {
         try{
             StringEntity entity=new StringEntity(JSON.toJSONString(dto), getContentType(dto.getContentType()));
             retMsg=HttpUtil.httpsSend(dto.getUrl(), Global.PUT,entity);
+            json.put(Global.SUCCESS,true);
+            json.put(Global.ERRMSG,TradeCode.TRADE_SUCCESS.getMessage());
+            json.put("body",retMsg);
+            this.writeToPage(response,json);
+        }catch(IOException ioe){
+            logger.error(ioe.getMessage());
+            json.put(Global.SUCCESS,false);
+            json.put(Global.ERRMSG,ioe.getMessage());
+            this.writeToPage(response,json);
         }catch (Exception e){
             logger.error(e.getMessage());
             json.put(Global.SUCCESS,false);
@@ -86,6 +115,15 @@ public class HttpContorller extends BaseContorller {
         try{
             StringEntity entity=new StringEntity(JSON.toJSONString(dto), getContentType(dto.getContentType()));
             retMsg=HttpUtil.httpsSend(dto.getUrl(), Global.PATCH,entity);
+            json.put(Global.SUCCESS,true);
+            json.put(Global.ERRMSG,TradeCode.TRADE_SUCCESS.getMessage());
+            json.put("body",retMsg);
+            this.writeToPage(response,json);
+        }catch(IOException ioe){
+            logger.error(ioe.getMessage());
+            json.put(Global.SUCCESS,false);
+            json.put(Global.ERRMSG,ioe.getMessage());
+            this.writeToPage(response,json);
         }catch (Exception e){
             logger.error(e.getMessage());
             json.put(Global.SUCCESS,false);
@@ -102,6 +140,15 @@ public class HttpContorller extends BaseContorller {
         try{
             StringEntity entity=new StringEntity(JSON.toJSONString(dto), getContentType(dto.getContentType()));
             retMsg=HttpUtil.httpsSend(dto.getUrl(), Global.DELETE,entity);
+            json.put(Global.SUCCESS,true);
+            json.put(Global.ERRMSG,TradeCode.TRADE_SUCCESS.getMessage());
+            json.put("body",retMsg);
+            this.writeToPage(response,json);
+        }catch(IOException ioe){
+            logger.error(ioe.getMessage());
+            json.put(Global.SUCCESS,false);
+            json.put(Global.ERRMSG,ioe.getMessage());
+            this.writeToPage(response,json);
         }catch (Exception e){
             logger.error(e.getMessage());
             json.put(Global.SUCCESS,false);
