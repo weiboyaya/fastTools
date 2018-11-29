@@ -30,7 +30,7 @@ public class HttpUtil {
      * @return
      * @throws Exception
      */
-    public static String httpsSend(String url,String method, HttpEntity entity)throws Exception {
+    public static String httpsSend(String url,String method, HttpEntity entity)throws IOException,Exception {
         logger.info("请求开始，请求报文：{}，url：{}，报文头：{}", EntityUtils.toString(entity), url, entity.toString());
 
         /* 创建HttpClient */

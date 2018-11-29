@@ -20,6 +20,10 @@ public class HttpToolDTO extends BaseDTO {
      * 请求内容类型
      */
     private String contentType;
+    /**
+     * 内容头
+     */
+    private String head;
 
     public String getUrl() {
         return url;
@@ -45,8 +49,16 @@ public class HttpToolDTO extends BaseDTO {
         this.contentType = contentType;
     }
 
+    public String getHead() {
+        return head;
+    }
+
+    public void setHead(String head) {
+        this.head = head;
+    }
+
     @Override
     public String toString() {
-        return "[url:"+this.url+",body:"+this.body+",contentType:"+this.contentType+"]";
+        return "[url:"+this.url+",body:"+this.body+",contentType:"+this.contentType+",head:"+head+"]";
     }
 }

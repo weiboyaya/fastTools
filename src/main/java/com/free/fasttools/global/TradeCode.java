@@ -6,7 +6,7 @@ package com.free.fasttools.global;
  * @Description: 错误信息枚举类
  */
 public enum TradeCode {
-
+    TRADE_SUCCESS("0000","请求成功!"),
 
     TRADE_SYS_ERROR("9999","系统异常!");
 
