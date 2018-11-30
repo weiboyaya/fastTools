@@ -10,7 +10,20 @@
 * MySql           =》   
 * Vue             =》 2.x  
                  
-3、[项目结构简介]：  
+3、[项目结构简介]：
+>com.free.fasttools
+>>controller
+* BaseController 【公共控制类】
+>>>httpTool
+* HttpController  【http控制类】
+>>dao
+>>>httpTool
+>>dto
+>>>httpTool
+>>global
+>>service
+>>utils
+* FasttoolsApplication【启动程序】
 
 4、[测试DEMO]：  
 
@@ -18,7 +31,8 @@
 
 6、[更新链接]：  
 
-7、[历史版本]：  
+7、[历史版本]：
+* 0.0.1-SNAPSHOT  添加http在线测试工具   2018-11-30
 
 8、[联系方式]：  
 * 759047731@qq.com  
