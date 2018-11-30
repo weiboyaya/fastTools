@@ -9,6 +9,7 @@ import com.free.fasttools.utils.http.HttpUtil;
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -32,17 +33,22 @@ public class HttpContorller extends BaseContorller {
 
     private static final Logger logger= LoggerFactory.getLogger(HttpContorller.class);
 
+    private static final  String BODY="body";
+
+    private static final  String HEAD="head";
+
     @RequestMapping("/post")
     public void post(ModelMap modelMap, HttpServletRequest request,
                      HttpServletResponse response, HttpToolDTO dto){
-        String retMsg=Global.EMPTY;
+        HttpEntity retEntity=null;
         JSONObject json=new JSONObject();
         try{
             StringEntity entity=new StringEntity(JSON.toJSONString(dto), getContentType(dto.getContentType()));
-            retMsg=HttpUtil.httpsSend(dto.getUrl(), Global.POST,entity);
+            retEntity=HttpUtil.httpsSend(dto.getUrl(), Global.POST,entity);
             json.put(Global.SUCCESS,true);
             json.put(Global.ERRMSG,TradeCode.TRADE_SUCCESS.getMessage());
-            json.put("body",retMsg);
+            json.put(BODY, EntityUtils.toString(retEntity));
+            json.put(HEAD,retEntity.toString());
             this.writeToPage(response,json);
         }catch(IOException ioe){
             logger.error(ioe.getMessage());
@@ -60,14 +66,15 @@ public class HttpContorller extends BaseContorller {
     @RequestMapping("/get")
     public void get(ModelMap modelMap, HttpServletRequest request,
                      HttpServletResponse response, HttpToolDTO dto){
-        String retMsg=Global.EMPTY;
+        HttpEntity retEntity=null;
         JSONObject json=new JSONObject();
         try{
             StringEntity entity=new StringEntity(JSON.toJSONString(dto), getContentType(dto.getContentType()));
-            retMsg=HttpUtil.httpsSend(dto.getUrl(), Global.GET,entity);
+            retEntity=HttpUtil.httpsSend(dto.getUrl(), Global.GET,entity);
             json.put(Global.SUCCESS,true);
             json.put(Global.ERRMSG,TradeCode.TRADE_SUCCESS.getMessage());
-            json.put("body",retMsg);
+            json.put(BODY, EntityUtils.toString(retEntity));
+            json.put(HEAD,retEntity.toString());
             this.writeToPage(response,json);
         }catch(IOException ioe){
             logger.error(ioe.getMessage());
@@ -85,14 +92,15 @@ public class HttpContorller extends BaseContorller {
     @RequestMapping("/put")
     public void put(ModelMap modelMap, HttpServletRequest request,
                     HttpServletResponse response, HttpToolDTO dto){
-        String retMsg=Global.EMPTY;
+        HttpEntity retEntity=null;
         JSONObject json=new JSONObject();
         try{
             StringEntity entity=new StringEntity(JSON.toJSONString(dto), getContentType(dto.getContentType()));
-            retMsg=HttpUtil.httpsSend(dto.getUrl(), Global.PUT,entity);
+            retEntity=HttpUtil.httpsSend(dto.getUrl(), Global.PUT,entity);
             json.put(Global.SUCCESS,true);
             json.put(Global.ERRMSG,TradeCode.TRADE_SUCCESS.getMessage());
-            json.put("body",retMsg);
+            json.put(BODY, EntityUtils.toString(retEntity));
+            json.put(HEAD,retEntity.toString());
             this.writeToPage(response,json);
         }catch(IOException ioe){
             logger.error(ioe.getMessage());
@@ -110,14 +118,15 @@ public class HttpContorller extends BaseContorller {
     @RequestMapping("patch")
     public void patch(ModelMap modelMap, HttpServletRequest request,
                      HttpServletResponse response, HttpToolDTO dto){
-        String retMsg=Global.EMPTY;
+        HttpEntity retEntity=null;
         JSONObject json=new JSONObject();
         try{
             StringEntity entity=new StringEntity(JSON.toJSONString(dto), getContentType(dto.getContentType()));
-            retMsg=HttpUtil.httpsSend(dto.getUrl(), Global.PATCH,entity);
+            retEntity=HttpUtil.httpsSend(dto.getUrl(), Global.PATCH,entity);
             json.put(Global.SUCCESS,true);
             json.put(Global.ERRMSG,TradeCode.TRADE_SUCCESS.getMessage());
-            json.put("body",retMsg);
+            json.put(BODY, EntityUtils.toString(retEntity));
+            json.put(HEAD,retEntity.toString());
             this.writeToPage(response,json);
         }catch(IOException ioe){
             logger.error(ioe.getMessage());
@@ -135,14 +144,15 @@ public class HttpContorller extends BaseContorller {
     @RequestMapping("delete")
     public void delete(ModelMap modelMap, HttpServletRequest request,
                      HttpServletResponse response, HttpToolDTO dto){
-        String retMsg=Global.EMPTY;
+        HttpEntity retEntity=null;
         JSONObject json=new JSONObject();
         try{
             StringEntity entity=new StringEntity(JSON.toJSONString(dto), getContentType(dto.getContentType()));
-            retMsg=HttpUtil.httpsSend(dto.getUrl(), Global.DELETE,entity);
+            retEntity=HttpUtil.httpsSend(dto.getUrl(), Global.DELETE,entity);
             json.put(Global.SUCCESS,true);
             json.put(Global.ERRMSG,TradeCode.TRADE_SUCCESS.getMessage());
-            json.put("body",retMsg);
+            json.put(BODY, EntityUtils.toString(retEntity));
+            json.put(HEAD,retEntity.toString());
             this.writeToPage(response,json);
         }catch(IOException ioe){
             logger.error(ioe.getMessage());

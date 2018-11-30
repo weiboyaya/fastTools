@@ -2,6 +2,7 @@ package com.free.fasttools.utils.http;
 
 import com.free.fasttools.global.Global;
 import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -23,14 +24,14 @@ public class HttpUtil {
     private final static Logger logger= LoggerFactory.getLogger(HttpUtil.class);
 
     /**
-     *
+     * 发送指定方法的http请求
      * @param url 請求地址
-     * @param method 方法类型
+     * @param method 方法类型（POST、GET、PUT、PATCH、DELETE）
      * @param entity 请求参数
      * @return
      * @throws Exception
      */
-    public static String httpsSend(String url,String method, HttpEntity entity)throws IOException,Exception {
+    public static String httpsSendWithMethod(String url,String method, HttpEntity entity)throws IOException,Exception {
         logger.info("请求开始，请求报文：{}，url：{}，报文头：{}", EntityUtils.toString(entity), url, entity.toString());
 
         /* 创建HttpClient */
@@ -50,9 +51,44 @@ public class HttpUtil {
         HttpUriRequest request = getMethod(method).setUri(url).setEntity(entity).setConfig(config).build();
 
         String resStr = client.execute(request, StringResponseHandle.INSTANCE);
+
         logger.info("请求结束，返回报文：{}", resStr);
 
         return resStr;
+
+    }
+
+    /**
+     * 发起http请求，返回HttpEntity对象
+     * @param url 請求地址
+     * @param method 方法类型（POST、GET、PUT、PATCH、DELETE）
+     * @param entity 请求参数
+     * @return
+     * @throws IOException
+     * @throws Exception
+     */
+    public static HttpEntity httpsSend(String url,String method, HttpEntity entity)throws IOException,Exception {
+        logger.info("请求开始，请求报文：{}，url：{}，报文头：{}", EntityUtils.toString(entity), url, entity.toString());
+
+        /* 创建HttpClient */
+        CloseableHttpClient client = HttpClients.custom()
+                .setConnectionManager(MyPoolingHttpClientConnectionManager.INSTANCE)
+                .setSSLSocketFactory(TrustAllCASSLConnectionSocketFactory.INSTANCE)
+                .build();
+
+        //创建HttpRequest的配置项（主要是一些网络通讯方面的设置：如超时时间，代理等）
+        RequestConfig config = RequestConfig.custom()
+                .setConnectTimeout(10000)//连接超时时间，单位毫秒
+                .setSocketTimeout(60000)//请求获取数据的超时时间，单位毫秒。 如果访问一个接口，多少时间内无法返回数据，就直接放弃此次调用
+                .setConnectionRequestTimeout(5000)//设置从connect Manager获取Connection 超时时间，单位毫秒。这个属性是新加的属性，因为目前版本是可以共享连接池的。
+                .build();
+
+        //创建Http请求
+        HttpUriRequest request = getMethod(method).setUri(url).setEntity(entity).setConfig(config).build();
+
+        CloseableHttpResponse response =client.execute(request);
+
+        return response.getEntity();
 
     }
 
