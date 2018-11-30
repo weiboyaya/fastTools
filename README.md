@@ -13,9 +13,7 @@
 3、[项目结构简介]：
 >com.free.fasttools
 >>controller
-* BaseController 【公共控制类】
 >>>httpTool
-* HttpController  【http控制类】
 >>dao
 >>>httpTool
 >>dto
