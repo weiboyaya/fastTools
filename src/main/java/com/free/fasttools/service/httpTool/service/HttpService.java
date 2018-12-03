@@ -8,7 +8,7 @@ import com.free.utils.expection.FastException;
 /**
  * @Auther: zhengwei
  * @Date: 2018/12/3 16:58
- * @Description:
+ * @Description: http服务接口
  */
 public interface HttpService {
     /**
