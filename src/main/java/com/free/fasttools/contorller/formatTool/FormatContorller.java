@@ -3,6 +3,7 @@ package com.free.fasttools.contorller.formatTool;
 import com.alibaba.fastjson.JSONObject;
 import com.free.fasttools.contorller.BaseContorller;
 import com.free.fasttools.dto.formatTool.FormatToolDTO;
+import com.free.fasttools.global.Global;
 import com.free.fasttools.service.formatTool.service.FormatService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,6 +33,16 @@ public class FormatContorller extends BaseContorller {
     public void jsonFormat(ModelMap modelMap, HttpServletRequest request,
                            HttpServletResponse response, FormatToolDTO dto){
         JSONObject json=null;
+        dto.setType(Global.TYPE_JSON);
+        json=formatService.getFormatResult(dto);
+        this.writeToPage(response,json);
+    }
+
+    @RequestMapping("/xml")
+    public void xmlFormat(ModelMap modelMap, HttpServletRequest request,
+                           HttpServletResponse response, FormatToolDTO dto){
+        JSONObject json=null;
+        dto.setType(Global.TYPE_XML);
         json=formatService.getFormatResult(dto);
         this.writeToPage(response,json);
     }

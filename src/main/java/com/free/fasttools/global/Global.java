@@ -63,5 +63,13 @@ public class Global {
      * application/x-www-form-urlencoded
      */
     public static final String APPLICATION_X_WWW_FORM_URLENCODED="application/x-www-form-urlencoded";
+    /**
+     * json
+     */
+    public static final String TYPE_JSON="json";
+    /**
+     * xml
+     */
+    public static final String TYPE_XML="xml";
 
 }

@@ -10,15 +10,20 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import org.apache.logging.slf4j.SLF4JLoggerContextFactory;
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.XMLWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.io.StringWriter;
+
 /**
  * @Auther: zhengwei
  * @Date: 2018/12/3 21:28
- * @Description:
+ * @Description: 格式转化service
  */
 @Service
 public class FormatServiceImpl implements FormatService {
@@ -30,7 +35,12 @@ public class FormatServiceImpl implements FormatService {
         String formatJson= Global.EMPTY;
         JSONObject json=null;
         try{
-            formatJson=toPrettyFormat(dto.getInputVal());
+            if(Global.TYPE_JSON.equalsIgnoreCase(dto.getType())){
+                formatJson=toPrettyFormat(dto.getInputVal());
+            }else if(Global.TYPE_XML.equalsIgnoreCase(dto.getType())){
+                formatJson=xmlFormat(dto.getInputVal());
+            }
+
             dto.setErrMsg(TradeCode.TRADE_SUCCESS.getMessage());
             dto.setResultVal(formatJson);
             json=(JSONObject)JSON.toJSON(dto);
@@ -60,6 +70,28 @@ public class FormatServiceImpl implements FormatService {
         JsonObject jsonObject = jsonParser.parse(json).getAsJsonObject();
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         return gson.toJson(jsonObject);
+    }
+
+    private String xmlFormat(String json)throws Exception{
+        Document document = null;
+        document = DocumentHelper.parseText(json);
+        /**
+         * 格式化输出格式
+          */
+        OutputFormat format = OutputFormat.createPrettyPrint();
+        format.setEncoding(Global.UTF8);
+        StringWriter writer = new StringWriter();
+        /**
+         * 格式化输出流
+         */
+        XMLWriter xmlWriter = new XMLWriter(writer, format);
+        /**
+         * 将document写入到输出流
+         */
+        xmlWriter.write(document);
+        xmlWriter.close();
+
+        return writer.toString();
     }
 
 }
