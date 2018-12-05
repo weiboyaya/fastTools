@@ -8,7 +8,9 @@ package com.free.fasttools.global;
 public enum TradeCode {
     TRADE_SUCCESS("0000","请求成功!"),
 
-    TRADE_SYS_ERROR("9999","系统异常!");
+    TRADE_SYS_ERROR("9999","系统异常!"),
+
+    TRADE_FORMAT_ERROR("9001","格式化错误！");
 
 
 

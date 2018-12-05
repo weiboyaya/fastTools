@@ -11,7 +11,7 @@ public class FormatToolDTO extends BaseDTO {
     /**
      * 请求字符串
      */
-    private String reqStr;
+    private String inputVal;
     /**
      * 转换类型
      */
@@ -21,12 +21,12 @@ public class FormatToolDTO extends BaseDTO {
      */
     private String resultVal;
 
-    public String getReqStr() {
-        return reqStr;
+    public String getInputVal() {
+        return inputVal;
     }
 
-    public void setReqStr(String reqStr) {
-        this.reqStr = reqStr;
+    public void setInputVal(String inputVal) {
+        this.inputVal = inputVal;
     }
 
     public String getType() {
@@ -47,6 +47,6 @@ public class FormatToolDTO extends BaseDTO {
 
     @Override
     public String toString() {
-        return "[reqStr="+this.reqStr+",type="+this.type+",resultVal="+this.resultVal+"]";
+        return "[inputVal="+this.inputVal+",type="+this.type+",resultVal="+this.resultVal+"]";
     }
 }

@@ -7,7 +7,7 @@ package com.free.fasttools.dto;
  */
 public class BaseDTO {
 
-    private String success;
+    private Boolean success;
 
     private String code;
 
@@ -19,7 +19,7 @@ public class BaseDTO {
 
     private Long pages;
 
-    public String getSuccess() {
+    public Boolean getSuccess() {
         return success;
     }
 
@@ -27,7 +27,7 @@ public class BaseDTO {
 
     public void setCode(String code) { this.code = code; }
 
-    public void setSuccess(String success) {
+    public void setSuccess(Boolean success) {
         this.success = success;
     }
 
