@@ -31,14 +31,12 @@ public class FormatServiceImpl implements FormatService {
         JSONObject json=null;
         try{
             formatJson=toPrettyFormat(dto.getInputVal());
-            //dto.setSuccess(true);
             dto.setErrMsg(TradeCode.TRADE_SUCCESS.getMessage());
             dto.setResultVal(formatJson);
             json=(JSONObject)JSON.toJSON(dto);
             json.put(Global.SUCCESS,true);
         }catch (Exception e){
             logger.error("JSON格式化出错：{}",e.getMessage());
-            //dto.setSuccess(false);
             dto.setResultVal(e.getMessage());
             dto.setErrMsg(TradeCode.TRADE_FORMAT_ERROR.getMessage());
             json=(JSONObject)JSON.toJSON(dto);
@@ -55,6 +53,10 @@ public class FormatServiceImpl implements FormatService {
      */
     private String toPrettyFormat(String json)throws Exception{
         JsonParser jsonParser = new JsonParser();
+        json=json.replaceAll("\\\\\"","").replaceAll("\r|\n", "");
+        if(json.startsWith("\"")&&json.endsWith("\"")){
+            json=json.substring(1,json.length()-1);
+        }
         JsonObject jsonObject = jsonParser.parse(json).getAsJsonObject();
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         return gson.toJson(jsonObject);
