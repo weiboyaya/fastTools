@@ -46,7 +46,7 @@ public class FormatServiceImpl implements FormatService {
             json=(JSONObject)JSON.toJSON(dto);
             json.put(Global.SUCCESS,true);
         }catch (Exception e){
-            logger.error("JSON格式化出错：{}",e.getMessage());
+            logger.error("格式化出错：{}",e.getMessage());
             dto.setResultVal(e.getMessage());
             dto.setErrMsg(TradeCode.TRADE_FORMAT_ERROR.getMessage());
             json=(JSONObject)JSON.toJSON(dto);
