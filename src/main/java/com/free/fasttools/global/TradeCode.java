@@ -6,11 +6,11 @@ package com.free.fasttools.global;
  * @Description: 错误信息枚举类
  */
 public enum TradeCode {
-    TRADE_SUCCESS("0000","请求成功!"),
+    TRADE_SUCCESS("0000","操作成功!"),
 
     TRADE_SYS_ERROR("9999","系统异常!"),
 
-    TRADE_FORMAT_ERROR("9001","格式化错误！");
+    TRADE_FORMAT_ERROR("9001","格式化出错：数据格式错误！");
 
 
 

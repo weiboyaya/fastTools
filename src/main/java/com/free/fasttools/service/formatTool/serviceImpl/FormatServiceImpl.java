@@ -31,15 +31,17 @@ public class FormatServiceImpl implements FormatService {
         JSONObject json=null;
         try{
             formatJson=toPrettyFormat(dto.getInputVal());
-            dto.setSuccess(true);
+            //dto.setSuccess(true);
             dto.setErrMsg(TradeCode.TRADE_SUCCESS.getMessage());
             dto.setResultVal(formatJson);
             json=(JSONObject)JSON.toJSON(dto);
+            json.put(Global.SUCCESS,true);
         }catch (Exception e){
             logger.error("JSON格式化出错：{}",e.getMessage());
-            dto.setSuccess(false);
+            //dto.setSuccess(false);
             dto.setErrMsg(TradeCode.TRADE_FORMAT_ERROR.getMessage());
             json=(JSONObject)JSON.toJSON(dto);
+            json.put(Global.SUCCESS,false);
         }
 
         return json;
