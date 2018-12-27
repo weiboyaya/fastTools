@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.free.fasttools.dao.custom.SuggestDAO">
+
+    <select id="querySuggest" resultType="SuggestPO">
+        SELECT
+          id as "id",
+          email as "email",
+          remark as "remark",
+          status as "status",
+          created as "created"
+        FROM ft_suggest
+        WHERE email=#{email}
+        AND remark=#{remark}
+    </select>
+    
+    <insert id="save">
+        INSERT INTO
+          ft_suggest(email,remark,created)
+          values (
+            #{email},
+            #{remark},
+            #{created}
+          )
+    </insert>
+
+</mapper>
