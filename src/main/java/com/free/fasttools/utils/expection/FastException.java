@@ -1,4 +1,4 @@
-package com.free.utils.expection;
+package com.free.fasttools.utils.expection;
 
 /**
  * @Auther: zhengwei

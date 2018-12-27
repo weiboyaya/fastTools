@@ -3,7 +3,7 @@ package com.free.fasttools.service.httpTool.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.free.fasttools.dto.httpTool.HttpToolDTO;
-import com.free.utils.expection.FastException;
+import com.free.fasttools.utils.expection.FastException;
 
 /**
  * @Auther: zhengwei

@@ -10,7 +10,9 @@ public enum TradeCode {
 
     TRADE_SYS_ERROR("9999","系统异常!"),
 
-    TRADE_FORMAT_ERROR("9001","格式化出错：数据格式错误！");
+    TRADE_FORMAT_ERROR("9001","格式化出错：数据格式错误！"),
+
+    TRADE_INSERT_DATA_ERROR("9002","信息登记失败！");
 
 
 

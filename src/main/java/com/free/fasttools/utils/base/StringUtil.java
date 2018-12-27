@@ -1,4 +1,4 @@
-package com.free.utils.base;
+package com.free.fasttools.utils.base;
 
 import com.free.utils.file.impl.CloseUtil;
 
@@ -15,6 +15,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.zip.Deflater;
 import java.util.zip.Inflater;
+import com.free.utils.base.ValueUtil;
 
 
 public class StringUtil
@@ -602,7 +603,7 @@ public class StringUtil
 		boolean[] fValues = new boolean[tValues.length];
 		for (int i = 0; i < tValues.length; i++)
 		{
-			fValues[i] = ValueUtil.boolValueC(tValues[i]);
+			fValues[i] = com.free.utils.base.ValueUtil.boolValueC(tValues[i]);
 		}
 		return fValues;
 	}

@@ -1,11 +1,13 @@
 package com.free.fasttools.dto;
 
+import java.io.Serializable;
+
 /**
  * @Auther: zhengwei
  * @Date: 2018/11/28 22:34
  * @Description: javaBean 基类
  */
-public class BaseDTO {
+public class BaseDTO implements Serializable {
 
     private Boolean success;
 

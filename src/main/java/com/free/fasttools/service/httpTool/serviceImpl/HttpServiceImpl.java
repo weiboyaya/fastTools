@@ -7,7 +7,7 @@ import com.free.fasttools.global.Global;
 import com.free.fasttools.global.TradeCode;
 import com.free.fasttools.service.httpTool.service.HttpService;
 import com.free.fasttools.utils.http.HttpUtil;
-import com.free.utils.expection.FastException;
+import com.free.fasttools.utils.expection.FastException;
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
