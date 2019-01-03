@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" /><title>在线文件对比</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<script src="index.js"></script>
+	<script type="text/javascript">
+		var url, debug, key;
+		try {
+			url = new URL(window.location);
+		} catch (ex) {
+			url = window.location;
+		}
+		if (url.pathname.match(/\/([A-Za-z0-9]{8})\/{0,1}/)) {
+			key = url.pathname.substr(1,8);
+		} else if (url.pathname === '/united-states-declaration-of-independence') {
+			key = 'usaindep';
+		}
+		var isSample = key === 'usaindep';
+	</script>
+</head>
+<body style="visibility:hidden">
+
+	<!-- toolbar -->
+	<ul id="toolbar">
+		<li class="separator"></li>
+        <li id="tb-file-import" data-icon="icon-import" title="导入">导入</li>
+        <li class="separator"></li>
+		<li id="tb-file-save" data-icon="icon-save" title="导出diff">导出diff</li>
+		<li class="separator"></li>
+        <li id="tb-view-change-prev" data-icon="icon-arrow-up" title="上个差异">上个差异</li>
+        <li class="separator"></li>
+		<li id="tb-view-change-next" data-icon="icon-arrow-down" title="下个差异">下个差异</li>
+		<li class="separator"></li>
+        <li id="tb-edit-right-merge-left" data-icon="icon-arrow-left-v" title="向左合并">向左合并</li>
+        <li class="separator"></li>
+        <li id="tb-edit-left-merge-right" data-icon="icon-arrow-right-v" title="向右合并">向右合并</li>
+        <li class="separator"></li>
+        <li id="tb-view-swap" data-icon="icon-swap" title="左右互换">左右互换</li>
+        <li class="separator"></li>
+	</ul>
+
+	<!-- dialog upload -->
+	<div id="dialog-upload" title="文件导入" style="display:none">
+		<div class="tabs">
+			<ul>
+				<li><a href="#tabs-1">导入文件</a></li>
+				<li><a href="#tabs-2">导入地址</a></li>
+			</ul>
+			<div id="tabs-1">
+				<p>
+					文件直接导入您的浏览器。它们<font color='red' style="font-weight:bold;">不会</font>上传到服务器。
+				</p>
+				<label for="file-lhs">左侧文件:</label> <input id="file-lhs" style="display:inline-block" type="file"><div id="file-lhs-progress"><div class="progress-label">载入中...</div></div><br />
+				<label for="file-rhs">右侧文件:</label> <input id="file-rhs" style="display:inline-block" type="file"><div id="file-rhs-progress"><div class="progress-label">载入中...</div></div><br />
+			</div>
+			<div id="tabs-2">
+				<p>
+					文件直接导入您的浏览器。它们<font color='red' style="font-weight:bold;">不会</font>上传到服务器。
+				</p>
+				<label for="url-lhs">左侧地址:</label> <input id="url-lhs" type="input" size="40"><div id="file-lhs-progress"><div class="progress-label">载入中...</div></div><br />
+				<label for="url-rhs">右侧地址:</label> <input id="url-rhs" type="input" size="40"><div id="file-rhs-progress"><div class="progress-label">载入中...</div></div><br />
+			</div>
+		</div>
+	</div>
+	
+	<!-- editor -->
+	<div style="position: absolute;top: 32px;bottom: 10px;left: 5px;right: 5px;overflow: hidden;padding-bottom: 2px;">
+		<div id="mergely">
+		</div>
+	</div>
+</body>
+</html>
