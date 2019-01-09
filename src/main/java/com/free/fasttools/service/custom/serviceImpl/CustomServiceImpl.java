@@ -36,6 +36,7 @@ public class CustomServiceImpl implements CustomService {
     @Override
     public JSONObject addSuggest(SuggestPO dto){
         JSONObject json=null;
+        logger.info("建议信息：{}",JSON.toJSONString(dto));
         try{
             json=this.saveSuggest(dto);
         }catch(FastException fe){
