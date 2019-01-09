@@ -7,7 +7,7 @@
 * IntelliJ IDEA   =》 2018.2.5  
 * MyBatis         =》 3.4.7  
 * Tomcat          =》 1.80  
-* MySql           =》   
+* mariaDB         =》 5.5.60  
 * Vue             =》 2.x  
                  
 3、[项目结构简介]：
@@ -26,6 +26,8 @@
 4、[测试DEMO]：  
 
 5、[作者列表]：  
+* zhengwei
+* wangchao
 
 6、[更新链接]：  
 
